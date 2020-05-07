@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 
 const ContactForm = () => {
   const [data, setData] = useState();
-  const [isChecked, setIsChecked] = useState();
+  const [isChecked, setIsChecked] = useState(true);
   const { register, errors, handleSubmit } = useForm({
     mode: "onBlur",
   });
@@ -28,6 +28,19 @@ const ContactForm = () => {
           />
           {errors.firstName && (
             <p>Looks like there was an error: {errors.firstName.type}</p>
+          )}
+        </div>
+
+        <div>
+          <label htmlFor="middleName">Middle Name*</label>
+          <input
+            id='middleName'
+            name="middleName"
+            placeholder="forky"
+            ref={register({ required: true })}
+          />
+          {errors.middleName && (
+            <p>Looks like there was an error: {errors.middleName.type}</p>
           )}
         </div>
 
