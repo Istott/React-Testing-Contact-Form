@@ -1,5 +1,5 @@
 import React from "react";
-import { render, fireEvent } from "@testing-library/react";
+import { render, fireEvent, findAllByText } from "@testing-library/react";
 import { act } from 'react-dom/test-utils';
 import ContactForm from "./ContactForm";
 
@@ -8,7 +8,7 @@ test("renders App without crashing", () => {
 });
 
 test('contact form adds new users to user list', () => {
-    const { getByLabelText, getByTestId } = render(<ContactForm />)
+    const { getByLabelText, getByTestId, findAllByText } = render(<ContactForm />)
 
     const firstNameInput = getByLabelText(/First Name*/i);
     const lastNameInput = getByLabelText(/Last Name*/i);
@@ -21,9 +21,9 @@ test('contact form adds new users to user list', () => {
     fireEvent.change(messageInput, {target: {value: 'Edd is a beastly individual'}});
 
 
-    const termsInput = getbyLabelText(/terms/i)
+    // const termsInput = getbyLabelText(/terms/i)
     
-    fireEvent.click(termsInput);
+    // fireEvent.click(termsInput);
 
     const submitButton = getByTestId(/submit-button/i);
 
@@ -31,6 +31,11 @@ test('contact form adds new users to user list', () => {
         fireEvent.click(submitButton);
 
     })
+
+    // const edd = getByAllText(/Edd/i);
+    // expect(edd).toBeInTheDocument();
+
+    findAllByText(/edd/i);
 
 
 })

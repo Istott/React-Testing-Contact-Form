@@ -3,12 +3,17 @@ import { useForm } from "react-hook-form";
 
 const ContactForm = () => {
   const [data, setData] = useState();
+  const [isChecked, setIsChecked] = useState();
   const { register, errors, handleSubmit } = useForm({
     mode: "onBlur",
   });
   const onSubmit = (data) => {
     setData(data);
   };
+
+  const HandleChange = () => {
+    setIsChecked({isChecked: !isChecked})
+  }
 
   return (
     <div className="App">
@@ -66,7 +71,7 @@ const ContactForm = () => {
             id='terms'
             name="terms" 
             type='checkbox'
-
+            onChange={HandleChange}
             ref={register({ required: true })} 
           />
         </div>
